@@ -1,20 +1,18 @@
 function stringChop(str, size) {
-  // 1. Handle edge cases (null or empty string)
-  if (str === null || str.length === 0) return [];
+  // 1. If the string is null, undefined, or empty, return an empty array
+  if (!str) return [];
 
-  // 2. Convert size to a Number (since prompt returns a string)
-  const chunkLength = Number(size);
-  if (chunkLength <= 0) return [];
+  // 2. If size is not provided (null/undefined), return the whole string in an array
+  if (!size) return [str];
 
+  const chunkLength = parseInt(size);
   const chunks = [];
 
-	
-  // 3. The Logic: Loop through the string
+  // 3. Loop through and slice
   for (let i = 0; i < str.length; i += chunkLength) {
     chunks.push(str.slice(i, i + chunkLength));
   }
 
-  // 4. CRITICAL: Return the array so alert() can see it
   return chunks;
 }
 
